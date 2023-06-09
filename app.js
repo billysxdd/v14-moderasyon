@@ -76,3 +76,45 @@ client.login("TOKEN").then((_) => {
 process.on('unhandledRejection', error => {
     console.log(error);
 });
+
+
+
+const canvafy = require('canvafy')
+client.on('guildMemberAdd', async member => {
+    const welcome = await new canvafy.WelcomeLeave()
+    .setAvatar(member.user.displayAvatarURL({ forceStatic: true, extension: "png" }))
+    .setBackground("image", "https://th.bing.com/th/id/R.248b992f15fb255621fa51ee0ca0cecb?rik=K8hIsVFACWQ8%2fw&pid=ImgRaw&r=0")
+    .setTitle("Hoşgeldin")
+    .setDescription("Sunucumuza katıldı")
+    .setBorder("#2a2e35")
+    .setAvatarBorder("#2a2e35")
+    .setOverlayOpacity(0.3)
+    .build();
+  
+    member.guild.channels.cache.get(db.fetch(`hosgeldinkanal_${member.guild.id}`)).send({
+      files: [{
+        attachment: welcome,
+        name: `welcome-${member.id}.png`
+      }]
+    });
+  });
+
+
+  client.on('guildMemberRemove', async member => {
+    const welcome = await new canvafy.WelcomeLeave()
+    .setAvatar(member.user.displayAvatarURL({ forceStatic: true, extension: "png" }))
+    .setBackground("image", "https://th.bing.com/th/id/R.248b992f15fb255621fa51ee0ca0cecb?rik=K8hIsVFACWQ8%2fw&pid=ImgRaw&r=0")
+    .setTitle("Güle güle!")
+    .setDescription("Sunucumuzdan ayrıldı!")
+    .setBorder("#2a2e35")
+    .setAvatarBorder("#2a2e35")
+    .setOverlayOpacity(0.3)
+    .build();
+  
+    member.guild.channels.cache.get(db.fetch(`hosgeldinkanal_${member.guild.id}`)).send({
+      files: [{
+        attachment: welcome,
+        name: `welcome-${member.id}.png`
+      }]
+    });
+  });
