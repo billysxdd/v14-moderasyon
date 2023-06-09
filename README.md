@@ -12,7 +12,7 @@
 - İlk olarak bilgisayarına [Node JS](https://nodejs.org/tr/) `(en düşük v16)` indir.
 
 - ⚠️ Altyapı Lisanslı, Paylaşım vb. Olursa Donunuza Kadar Alırım.
-- Daha sonra altyapıyı indirip `./app.js` dosyasındaki `client.login("TOKEn")` kısmını token ile doldurun.
+- Daha sonra altyapıyı indirip `./app.js` dosyasındaki `client.login("TOKEN")` kısmını token ile doldurun.
 - sonrasında modülleri kurmak için terminale aşşağıdaki kodu yaz.
 ```diff
 npm install
